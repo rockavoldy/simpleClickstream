@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Simple Clickstream</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <form id="loginForm" class="classLoginForm">
+      <pre>
+            Username: <input type="text" id="username" class="classUsername" name="username"><br>
+            Password: <input type="password" id="password" class="classPassword" name="password"><br>
+            <input type="button" id="submitForm" class="classSubmitForm" value="Login">
+        </pre>
+    </form>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("*").on("click", function(e) {
+          console.log(this.id);
+          console.log($(this).attr("class"));
+          console.log(e.pageX + "," + e.pageY);
+
+          $.ajax({
+            url: "http://localhost:3000/store",
+            type: "POST",
+            data: {
+              url: "http://localhost:3000",
+              positionx: e.pageX,
+              positiony: e.pageY,
+              elementId: this.id,
+              elementClass: $(this).attr("class")
+            },
+            dataType: "json",
+            success: function(html) {
+              $("#result").append(html);
+            }
+          });
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>

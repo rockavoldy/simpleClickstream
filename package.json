@@ -1,0 +1,17 @@
+{
+  "name": "simpleclickstream",
+  "version": "1.0.0",
+  "description": "Simple Click Stream record click anywhere on the screen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Akhmad Maulana Akbar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "kue": "^0.11.6",
+    "mongoose": "^5.4.20",
+    "redis": "^2.8.0"
+  }
+}
